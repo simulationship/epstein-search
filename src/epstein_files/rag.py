@@ -6,6 +6,7 @@ Optimized for legal document analysis:
 - Source grouping for coherent answer generation
 """
 
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
