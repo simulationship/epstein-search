@@ -66,7 +66,7 @@ def ask(
     # Step 2: Build structured context, grouped by source
     context = _build_legal_context(results)
 
-    # Step 3: Generate answer via LiteLLM (this is the only part needing an API key)
+    # Step 3: Generate answer via LiteLLM
     messages = [
         {"role": "system", "content": config.RAG_SYSTEM_PROMPT},
         {
@@ -80,7 +80,12 @@ def ask(
         },
     ]
 
-    response = litellm.completion(model=model, messages=messages)
+    # For local openai-compatible servers (LM Studio, vLLM, etc.), litellm requires an api_key
+    kwargs = {}
+    if model.startswith("openai/") and not os.environ.get("OPENAI_API_KEY"):
+        kwargs["api_key"] = "lm-studio"
+
+    response = litellm.completion(model=model, messages=messages, **kwargs)
     answer_text = response.choices[0].message.content
 
     return Answer(
