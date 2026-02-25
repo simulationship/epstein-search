@@ -2,13 +2,9 @@
 
 [![PyPI](https://img.shields.io/pypi/v/epstein-search)](https://pypi.org/project/epstein-search)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/))
 
-Semantic search over the publicly available Epstein Files — court documents, FBI reports, and DOJ publications — using AI-powered vector search.
-
-Built with [zvec](https://github.com/alibaba/zvec) and pre-computed embeddings from [devankit7873/EpsteinFiles-Vector-Embeddings-ChromaDB](https://huggingface.co/datasets/devankit7873/EpsteinFiles-Vector-Embeddings-ChromaDB).
-
-**No API key needed for search. Runs entirely locally.**
+Semantic search over the publicly available Epstein Files — court documents, FBI reports, flight logs, and DOJ publications — using AI-powered vector search. Runs entirely locally. No API key needed for search.
 
 ---
 
@@ -28,58 +24,56 @@ Or tip via crypto:
 
 ---
 
-## Quick Start
+## Get Started in 3 Commands
 
 ```bash
 pip install epstein-search
-
-# One-time setup — downloads pre-built index (~100K+ document chunks)
-epstein-search setup
-
-# Search — free, local, no API key needed
-epstein-search search "flight logs to the island"
-
-# Filter by document type
-epstein-search search "testimony" --doc-type deposition
-
-# AI-powered answers (local Ollama = free, or any LLM API)
-epstein-search ask "Who appears most in the flight logs?" --model ollama/llama3
+epstein-search setup   # one-time: downloads 100K+ pre-built document chunks (~1-2 min)
+epstein-search chat    # start asking questions
 ```
 
-## Commands
+That's it. No API key needed. Type any question and get results from the documents instantly.
 
-| Command | Description | API Key? |
-|---------|-------------|----------|
-| `epstein-search setup` | Download & build search index | No |
-| `epstein-search chat` | **Interactive mode (recommended)** | Only for cloud LLMs |
-| `epstein-search search "query"` | One-off semantic search | **No** |
-| `epstein-search ask "question"` | One-off RAG answer | Only for cloud LLMs |
-| `epstein-search info` | Show index stats | No |
-| `epstein-search ingest` | Build from scratch (advanced) | No |
+---
 
-## Interactive Mode (Recommended)
+## Interactive Mode
 
-The easiest way to use epstein-search:
+```
+🔍 Epstein Files — Interactive Mode
+Model: gemini/gemini-3-flash-preview | Mode: ask | Top-K: 10
+Type a query, or /help for commands. /quit to exit.
 
-```bash
-epstein-search chat
+> who's on the flight logs?
 ```
 
-Type questions naturally. No flags needed. Commands inside chat:
+Commands inside chat:
 
 | Command | Description |
 |---------|-------------|
 | `/search` | Switch to search-only mode (no LLM) |
-| `/ask` | Switch to RAG mode (LLM answers) |
-| `/model openai/llama3` | Change LLM on the fly |
-| `/topk 5` | Change number of results |
+| `/ask` | Switch to RAG mode (LLM generates answers) |
+| `/model anthropic/claude-haiku-4-5` | Change LLM on the fly |
+| `/topk 5` | Change number of results retrieved |
 | `/info` | Show current settings |
 | `/quit` | Exit |
 
-**Tip:** Set your model once in `.env` so you never need to specify it:
+**Set a default model in `.env` so you never have to type it:**
 ```
-EPSTEIN_LLM_MODEL=openai/your-model-name
+EPSTEIN_LLM_MODEL=gemini/gemini-3-flash-preview
+GEMINI_API_KEY=your-key-here
 ```
+
+---
+
+## All Commands
+
+| Command | Description | API Key? |
+|---------|-------------|----------|
+| `epstein-search setup` | Download & build search index | No |
+| `epstein-search chat` | **Interactive mode** | Only for cloud LLMs |
+| `epstein-search search "query"` | One-off semantic search | **No** |
+| `epstein-search ask "question"` | One-off RAG answer | Only for cloud LLMs |
+| `epstein-search info` | Show index stats | No |
 
 ## Search Options
 
