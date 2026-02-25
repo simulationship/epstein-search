@@ -1,6 +1,6 @@
 [project]
 name = "epstein-search"
-version = "0.1.0"
+version = "0.1.1"
 description = "Semantic search over the Epstein Files using zvec + sentence-transformers"
 readme = "README.md"
 license = {text = "MIT"}
