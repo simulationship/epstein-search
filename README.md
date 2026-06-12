@@ -10,7 +10,7 @@ Semantic search over the publicly available Epstein Files — court documents, F
 
 ## ☕ Support This Project
 
-This is free, open-source research tooling. If you find it useful, please consider supporting:
+This is free, open-source research tooling. If you find it useful, please consider supporting me:
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-simulationship-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/simulationship)
 [![YouTube](https://img.shields.io/badge/YouTube-Simulationship-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/@Simulationship)
